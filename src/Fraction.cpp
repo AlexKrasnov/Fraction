@@ -30,7 +30,7 @@ Fraction::Fraction (const double& d)
 Fraction::~Fraction()
 {
 	/*cout << "Дробь " << (*this)
-	<< " уничтожена." << endl;*/
+	<< " уничтожена" << endl;*/
 }
 
 // метод сокращения рациональной дроби
@@ -120,42 +120,32 @@ const bool Fraction::operator <= (const Fraction a)
 	return true;
 }
 
-// операция сложения двух дробей
 Fraction Fraction::operator + (const Fraction a)
 {
 	Fraction res(*this);
 	return a+res;
 }
 
-// операция вычитания двух дробей
 Fraction Fraction::operator - (const Fraction a)
 {
 	Fraction b(a);
 	return -b+(*this);
 }
 
-// операция умножения двух дробей
 Fraction Fraction::operator * (const Fraction a)
 {
-	Fraction res;
-	res.numerator *= a.numerator;
-	res.intPart *= a.intPart;
-	res.sign *= a.sign;
-	res.GetIntPart();   //выделение целой части числа
-	res.Cancellation(); //сокращение дроби
-	return res;
+	Fraction tmp1(*this), tmp2(a);
+	double d1(tmp1), d2(tmp2);
+	Fraction *res = new Fraction (d1*d2);
+	return *res;
 }
 
-// операция деления двух дробей
 Fraction Fraction::operator / (const Fraction a)
 {
-	Fraction res;
-	res.numerator /= a.numerator;
-	res.intPart /= a.intPart;
-	res.sign /= a.sign;
-	res.GetIntPart();   //выделение целой части числа
-	res.Cancellation(); //сокращение дроби
-	return res;
+	Fraction tmp1(*this), tmp2(a);
+	double d1(tmp1), d2(tmp2);
+	Fraction *res = new Fraction (d1/d2);
+	return *res;
 }
 
 Fraction Fraction:: operator-()

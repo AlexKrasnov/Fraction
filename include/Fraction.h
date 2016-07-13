@@ -52,13 +52,10 @@ public:
 	// функция умножения целого числа и дроби
 	friend Fraction operator * (const Fraction c, const double a)
 	{
-		Fraction res(c);
-		res.numerator *= abs(int(a));
-		res.intPart *= abs(int(a));
-		res.sign *= (int(a)/abs(int(a)));
-		res.GetIntPart();   //выделение целой части числа
-		res.Cancellation(); //сокращение дроби
-		return res;
+		Fraction b(c);
+		double d = double(b);
+		Fraction *res = new Fraction(d*a);
+		return *res;
 	}
 	// функция деления целого числа на дробь
 	friend Fraction operator / (const Fraction c, const double a)
